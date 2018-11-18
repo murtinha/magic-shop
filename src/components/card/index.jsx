@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { PortalWithState } from 'react-portal';
 import styled from 'styled-components';
+
+import CardDetails from './details';
 
 const CardWrapper = styled.div`
   margin: 0 8px 16px 0;
@@ -8,6 +11,8 @@ const CardWrapper = styled.div`
 `
 const CardBody = styled.img`
   cursor: pointer;
+  width: 200px;
+  heigth: 200px;
 `
 
 const CardFooter = styled.div`
@@ -20,8 +25,8 @@ const Button = styled.button`
   transition: background-color .3s;
   font-size: 14px;
   font-weight: 500;
-  min-height: 36px;
-  line-height: 36px;
+  min-height: 25px;
+  line-height: 25px;
   padding: 0 12px;
   border-radius: 3px;
   color: black;
@@ -40,15 +45,18 @@ const Button = styled.button`
   };
 `
 export class Card extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { card } = this.props;
     return (
       <CardWrapper>
-        <CardBody src={`${card.imageUrl}`} /> 
+        <PortalWithState closeOnOutsideClick> 
+          {({ openPortal, portal }) => (
+            <React.Fragment>
+              <CardBody onClick={openPortal} src={`${card.imageUrl}`} /> 
+              {portal(<CardDetails />)}
+            </React.Fragment>
+          )}
+        </PortalWithState>
 
         <CardFooter>
           <Button> Adicionar </Button>
