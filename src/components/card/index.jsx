@@ -52,8 +52,20 @@ export class Card extends Component {
         <PortalWithState closeOnOutsideClick> 
           {({ openPortal, portal }) => (
             <React.Fragment>
-              <CardBody onClick={openPortal} src={`${card.imageUrl}`} /> 
-              {portal(<CardDetails />)}
+              <CardBody onClick={openPortal} src={card.imageUrl} /> 
+              {portal(
+                <CardDetails 
+                  image={card.imageUrl}
+                  name={card.name}
+                  manaCost={card.manaCost}
+                  type={card.type}
+                  rarity={card.rarity}
+                  setName={card.setName}
+                  text={card.text}
+                  flavor={card.flavor}
+                  artist={card.artist}
+                />
+              )}
             </React.Fragment>
           )}
         </PortalWithState>
