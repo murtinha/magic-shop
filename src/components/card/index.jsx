@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { PortalWithState } from 'react-portal';
 import styled from 'styled-components';
 
 import CardDetails from './details';
@@ -45,31 +44,34 @@ const Button = styled.button`
   };
 `
 export class Card extends Component {
+  constructor() {
+    super();
+    this.state =  {
+      isOpen: false,
+    };
+  }
+
   render() {
     const { card } = this.props;
+    const { isOpen } = this.state;
     return (
       <CardWrapper>
-        <PortalWithState closeOnOutsideClick> 
-          {({ openPortal, portal }) => (
-            <React.Fragment>
-              <CardBody onClick={openPortal} src={card.imageUrl} /> 
-              {portal(
-                <CardDetails 
-                  image={card.imageUrl}
-                  name={card.name}
-                  manaCost={card.manaCost}
-                  type={card.type}
-                  rarity={card.rarity}
-                  setName={card.setName}
-                  text={card.text}
-                  flavor={card.flavor}
-                  artist={card.artist}
-                />
-              )}
-            </React.Fragment>
-          )}
-        </PortalWithState>
-
+        <CardBody onClick={() => this.setState({ isOpen: true })} src={card.imageUrl} /> 
+        {
+          isOpen && 
+          <CardDetails 
+            onClose={()=> this.setState({ isOpen: false })}
+            image={card.imageUrl}
+            name={card.name}
+            manaCost={card.manaCost}
+            type={card.type}
+            rarity={card.rarity}
+            setName={card.setName}
+            text={card.text}
+            flavor={card.flavor}
+            artist={card.artist}
+          />
+        }
         <CardFooter>
           <Button> Adicionar </Button>
         </CardFooter>

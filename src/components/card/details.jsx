@@ -1,4 +1,5 @@
 import React from 'react';
+import { Portal } from 'react-portal';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -39,21 +40,22 @@ export const CardDetails: SComponent<Props> = ({
   flavor = "No description",
   artist,
 }) => (
-  <Wrapper>  
-    <Image src={image} />    
+  <Portal>
+    <Wrapper>  
+      <Image src={image} />    
 
-    <DetailsWrapper>
-      <Text> Nome: {name} </Text>
-      <Text> Custo de mana: {manaCost} </Text>
-      <Text> Tipo: {type} </Text>
-      <Text> Raridade: {rarity} </Text>
-      <Text> Coleção: {setName} </Text>
-      <Text> Texto: {text} </Text>
-      <Text> Descrição: {flavor} </Text>
-      <Text> Artista: {artist} </Text>
-    </DetailsWrapper>
-      
-  </Wrapper>
+      <DetailsWrapper>
+        <Text> Nome: {name} </Text>
+        <Text> Custo de mana: {manaCost} </Text>
+        <Text> Tipo: {type} </Text>
+        <Text> Raridade: {rarity} </Text>
+        <Text> Coleção: {setName} </Text>
+        <Text> Texto: {text} </Text>
+        <Text> Descrição: {flavor} </Text>
+        <Text> Artista: {artist} </Text>
+      </DetailsWrapper>
+    </Wrapper>
+  </Portal>
 );
 
 export default CardDetails;
