@@ -52,7 +52,7 @@ export class Card extends Component {
   }
 
   render() {
-    const { card } = this.props;
+    const { card, addCard } = this.props;
     const { isOpen } = this.state;
     return (
       <CardWrapper>
@@ -73,7 +73,7 @@ export class Card extends Component {
           />
         }
         <CardFooter>
-          <Button> Adicionar </Button>
+          <Button onClick={() => addCard({ name: card.name, cardId: card.id })}> Adicionar </Button>
         </CardFooter>
 
       </CardWrapper>

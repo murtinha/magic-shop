@@ -10,6 +10,19 @@ const AppWrapper = styled.div`
   justify-content: center;
 `
 
+const AppHeader = styled.div`
+  padding: 8px;
+  border-bottom: 1px solid black;
+  width: 100%;
+  margin-bottom: 8px;
+`
+
+const Icon = styled.span`
+  cursor: pointer;
+  float: right;
+  font-size: 25px;
+`
+
 class App extends Component {
   constructor() {
     super();
@@ -28,17 +41,7 @@ class App extends Component {
   addCard = (card) => {
     const { deck } = this.state;
     const { cardId } = card;
-
-    if (deck[cardId]) {
-      const incrementedCard = {
-        ...deck[cardId],
-        amount: deck[cardId].amount + 1,
-      };
-      this.setState({ deck: [...this.state.deck, ...incrementedCard] });
-      return;
-    }
-
-    this.setState({ deck: [...this.state.deck, ...card] });
+    this.setState({ deck: [...deck, {[cardId]: {...card } }] });
   }
 
   removeCard = (cardId) => {
@@ -48,8 +51,14 @@ class App extends Component {
   }
 
   render() {
+    const { deck } = this.state;
     return (
       <AppWrapper>
+        <AppHeader>
+          <Icon>
+            Meu deck: {deck.length}
+          </Icon>
+        </AppHeader>
         { 
           this.state.cards.map((card, idx) => <Card key={idx} card={card} addCard={this.addCard} />) 
         }
