@@ -15,6 +15,7 @@ class App extends Component {
     super();
     this.state = {
       cards: [],
+      deck: [],
     }
   }
 
@@ -24,11 +25,33 @@ class App extends Component {
       .then(data => this.setState({ cards: data.cards }));
   }
     
+  addCard = (card) => {
+    const { deck } = this.state;
+    const { cardId } = card;
+
+    if (deck[cardId]) {
+      const incrementedCard = {
+        ...deck[cardId],
+        amount: deck[cardId].amount + 1,
+      };
+      this.setState({ deck: [...this.state.deck, ...incrementedCard] });
+      return;
+    }
+
+    this.setState({ deck: [...this.state.deck, ...card] });
+  }
+
+  removeCard = (cardId) => {
+    const { deck } = this.stae;
+    const deckWithoutCard = delete deck.cardId;
+    this.setState({ deck: deckWithoutCard });
+  }
+
   render() {
     return (
       <AppWrapper>
         { 
-          this.state.cards.map((card, idx) => <Card key={idx} card={card} />) 
+          this.state.cards.map((card, idx) => <Card key={idx} card={card} addCard={this.addCard} />) 
         }
       </AppWrapper>
     );

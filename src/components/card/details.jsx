@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
   background-color: #F8F8F8;
   position: fixed;
-  width: 75%;
+  width: 75vw;
   height: 75vh;
   top: 10%;
   left: 15%;
