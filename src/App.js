@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Portal } from 'react-portal';
 import './App.css';
 import Card from './components/card';
 
+export const Wrapper = styled.div`
+  background-color: #F8F8F8;
+  position: fixed;
+  width: 40vw;
+  height: 40vh;
+  top: 8%;
+  right: 6%;
+  z-index: 2;
+  transition: width 0.1s ease-in-out;
+  border: 1px solid #F8F8F8;
+  box-shadow: 4px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+`
 const AppWrapper = styled.div`
   display: flex;
   padding: 16px;
   flex-wrap: wrap;
   justify-content: center;
+`
+
+const Deck = styled.span`
+  padding: 4px;
+  height: 20px;
 `
 
 const AppHeader = styled.div`
@@ -29,6 +50,7 @@ class App extends Component {
     this.state = {
       cards: [],
       deck: [],
+      isOpen: false,
     }
   }
 
@@ -41,26 +63,36 @@ class App extends Component {
   addCard = (card) => {
     const { deck } = this.state;
     const { cardId } = card;
-    this.setState({ deck: [...deck, {[cardId]: {...card } }] });
+    this.setState({ deck: [...deck, card] });
   }
 
   removeCard = (cardId) => {
-    const { deck } = this.stae;
+    const { deck } = this.state;
     const deckWithoutCard = delete deck.cardId;
     this.setState({ deck: deckWithoutCard });
   }
 
   render() {
-    const { deck } = this.state;
+    const { deck, isOpen } = this.state;
     return (
       <AppWrapper>
         <AppHeader>
-          <Icon>
+          <Icon onClick={() => this.setState({ isOpen: true })}>
             Meu deck: {deck.length}
           </Icon>
         </AppHeader>
         { 
           this.state.cards.map((card, idx) => <Card key={idx} card={card} addCard={this.addCard} />) 
+        }
+        {
+          isOpen &&
+          <Portal>
+            <Wrapper>
+              {
+                deck.map((c,idx) => <Deck key={idx}> - {c.name} </Deck>)
+              }
+              </Wrapper>
+          </Portal>
         }
       </AppWrapper>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import { Portal } from 'react-portal';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   background-color: #F8F8F8;
   position: fixed;
   width: 75vw;
@@ -15,11 +15,11 @@ const Wrapper = styled.div`
   box-shadow: 4px solid black;
   display: flex;
 `
+
 const Image = styled.img`
   width: 300px;
   margin: 40px;
 `
-
 const Text = styled.div`
   font-size: 20px;
   margin: 16px;
