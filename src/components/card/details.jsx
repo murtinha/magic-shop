@@ -1,33 +1,7 @@
 import React from 'react';
 import { Portal } from 'react-portal';
-import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  background-color: #F8F8F8;
-  position: fixed;
-  width: 75vw;
-  height: 75vh;
-  top: 10%;
-  left: 15%;
-  z-index: 2;
-  transition: width 0.1s ease-in-out;
-  border: 1px solid #F8F8F8;
-  box-shadow: 4px solid black;
-  display: flex;
-`
-
-const Image = styled.img`
-  width: 300px;
-  margin: 40px;
-`
-const Text = styled.div`
-  font-size: 20px;
-  margin: 16px;
-`
-
-const DetailsWrapper = styled.div`
-  padding: 40px;
-`
+import './index.css';
 
 export const CardDetails: SComponent<Props> = ({ 
   image,
@@ -41,20 +15,20 @@ export const CardDetails: SComponent<Props> = ({
   artist,
 }) => (
   <Portal>
-    <Wrapper>  
-      <Image src={image} />    
+    <div className="wrap">  
+      <img className="image" src={image} />    
 
-      <DetailsWrapper>
-        <Text> Nome: {name} </Text>
-        <Text> Custo de mana: {manaCost} </Text>
-        <Text> Tipo: {type} </Text>
-        <Text> Raridade: {rarity} </Text>
-        <Text> Coleção: {setName} </Text>
-        <Text> Texto: {text} </Text>
-        <Text> Descrição: {flavor} </Text>
-        <Text> Artista: {artist} </Text>
-      </DetailsWrapper>
-    </Wrapper>
+      <div className="detailsWrapper">
+        <div className="text"> Nome: {name} </div>
+        <div className="text"> Custo de mana: {manaCost} </div>
+        <div className="text"> Tipo: {type} </div>
+        <div className="text"> Raridade: {rarity} </div>
+        <div className="text"> Coleção: {setName} </div>
+        <div className="text"> Texto: {text} </div>
+        <div className="text"> Descrição: {flavor} </div>
+        <div className="text"> Artista: {artist} </div>
+      </div>
+    </div>
   </Portal>
 );
 

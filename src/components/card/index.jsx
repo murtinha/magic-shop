@@ -1,62 +1,33 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 
 import CardDetails from './details';
 
-const CardWrapper = styled.div`
-  margin: 0 8px 16px 0;
-  display: flex;
-  flex-direction: column;
-`
-const CardBody = styled.img`
-  cursor: pointer;
-  width: 200px;
-  heigth: 200px;
-`
+import './index.css';
 
-const CardFooter = styled.div`
-  text-align: center;
-  width: 100%;
-  margin-top: 4px;
-`
-
-const Button = styled.button`
-  transition: background-color .3s;
-  font-size: 14px;
-  font-weight: 500;
-  min-height: 25px;
-  line-height: 25px;
-  padding: 0 12px;
-  border-radius: 3px;
-  color: black;
-  box-shadow: inset 0 0 0 1px #9e9e9e;
-  font-family: Roboto;
-  background-color: transparent;
-  text-transform: uppercase;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  display: inline-block;
-
-  &:hover {
-    color: #fff;
-    background-color: #9e9e9e;
-  };
-`
 export class Card extends Component {
   constructor() {
     super();
     this.state =  {
       isOpen: false,
+      isAdded: false,
     };
+  }
+
+  addCard = () => {
+    const { card } = this.props;
+    this.setState({ isAdded: true });
+    this.props.addCard({ name: card.name, cardId: card.id });
   }
 
   render() {
     const { card, addCard } = this.props;
-    const { isOpen } = this.state;
+    const { isOpen, isAdded } = this.state;
+    const text = isAdded
+      ? 'Adicionada'
+      : 'Adicionar';
     return (
-      <CardWrapper>
-        <CardBody onClick={() => this.setState({ isOpen: true })} src={card.imageUrl} /> 
+      <div className="cardWrapper">
+        <img className="cardBody" onClick={() => this.setState({ isOpen: true })} src={card.imageUrl} /> 
         {
           isOpen && 
           <CardDetails 
@@ -72,11 +43,11 @@ export class Card extends Component {
             artist={card.artist}
           />
         }
-        <CardFooter>
-          <Button onClick={() => addCard({ name: card.name, cardId: card.id })}> Adicionar </Button>
-        </CardFooter>
+        <div className="cardFooter">
+          <button className="btn" isAdded={isAdded} onClick={this.addCard}> {text} </button>
+        </div>
 
-      </CardWrapper>
+      </div>
     );
   }
 }
