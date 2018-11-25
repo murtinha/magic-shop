@@ -16,7 +16,7 @@ export const CardDetails: SComponent<Props> = ({
 }) => (
   <Portal>
     <div className="wrap">  
-      <img className="image" src={image} />    
+      <img alt="imagem" className="image" src={image} />    
 
       <div className="detailsWrapper">
         <div className="text"> Nome: {name} </div>

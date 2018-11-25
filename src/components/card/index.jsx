@@ -20,14 +20,14 @@ export class Card extends Component {
   }
 
   render() {
-    const { card, addCard } = this.props;
+    const { card } = this.props;
     const { isOpen, isAdded } = this.state;
     const text = isAdded
       ? 'Adicionada'
       : 'Adicionar';
     return (
       <div className="cardWrapper">
-        <img className="cardBody" onClick={() => this.setState({ isOpen: true })} src={card.imageUrl} /> 
+        <img alt="imagem" className="cardBody" onClick={() => this.setState({ isOpen: true })} src={card.imageUrl} /> 
         {
           isOpen && 
           <CardDetails 
@@ -44,7 +44,7 @@ export class Card extends Component {
           />
         }
         <div className="cardFooter">
-          <button className="btn" isAdded={isAdded} onClick={this.addCard}> {text} </button>
+          <button className="btn" onClick={this.addCard}> {text} </button>
         </div>
 
       </div>
