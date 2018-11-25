@@ -29,6 +29,7 @@ const AppWrapper = styled.div`
 const Deck = styled.span`
   padding: 4px;
   height: 20px;
+  cursor: pointer;
 `
 
 const AppHeader = styled.div`
@@ -62,14 +63,13 @@ class App extends Component {
     
   addCard = (card) => {
     const { deck } = this.state;
-    const { cardId } = card;
     this.setState({ deck: [...deck, card] });
   }
 
-  removeCard = (cardId) => {
+  removeCard = (index) => {
     const { deck } = this.state;
-    const deckWithoutCard = delete deck.cardId;
-    this.setState({ deck: deckWithoutCard });
+    deck.splice(index, 1);
+    this.setState({ deck });
   }
 
   render() {
@@ -89,7 +89,7 @@ class App extends Component {
           <Portal>
             <Wrapper>
               {
-                deck.map((c,idx) => <Deck key={idx}> - {c.name} </Deck>)
+                deck.map((c,idx) => <Deck key={idx} onClick={() => this.removeCard(idx)}> - {c.name} </Deck>)
               }
               </Wrapper>
           </Portal>
