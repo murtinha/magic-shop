@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card /> render should render properly 1`] = `
+<div
+  className="cardWrapper"
+>
+  <img
+    alt="imagem"
+    className="cardBody"
+    onClick={[Function]}
+  />
+  <div
+    className="cardFooter"
+  >
+    <button
+      className="btn"
+      onClick={[Function]}
+    >
+      Adicionar
+    </button>
+  </div>
+</div>
+`;
