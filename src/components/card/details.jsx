@@ -13,9 +13,10 @@ export const CardDetails: SComponent<Props> = ({
   text,
   flavor = "No description",
   artist,
+  onClose,
 }) => (
   <Portal>
-    <div className="wrap">  
+    <div className="wrap" onClick={onClose}>  
       <img alt="imagem" className="image" src={image} />    
 
       <div className="detailsWrapper">

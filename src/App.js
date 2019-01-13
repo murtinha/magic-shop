@@ -14,21 +14,26 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://api.magicthegathering.io/v1/cards?page=278')
+    fetch('https://api.magicthegathering.io/v1/cards?page=28')
       .then(res => res.json())
       .then(data => this.setState({ cards: data.cards }));
   }
     
-  addCard = (card) => {
+  addCard = card => {
     const { deck } = this.state;
     this.setState({ deck: [...deck, card] });
   }
 
-  removeCard = (index) => {
+  removeCard = id => {
     const { deck } = this.state;
-    deck.splice(index, 1);
+    const idx = deck.findIndex(card => card.cardId === id);
+    deck.splice(idx, 1);
     this.setState({ deck });
   }
+
+  toggleOpen= () => {
+   this.setState({ isOpen: !this.state.isOpen });
+} 
 
   render() {
     const { deck, isOpen } = this.state;
@@ -36,19 +41,19 @@ class App extends Component {
       <div className="appWrapper">
         <div className="appHeader">
           MONTE SEU DECK DE COMMANDER!
-          <span className="icon" onClick={() => this.setState({ isOpen: true })}>
+          <span className="icon" onClick={this.toggleOpen}>
             Meu deck: {deck.length}
           </span>
         </div>
         { 
-          this.state.cards.map((card, idx) => <Card key={idx} card={card} addCard={this.addCard} />) 
+          this.state.cards.map((card, idx) => <Card key={idx} card={card} onAdd={this.addCard} onRemove={this.removeCard} />) 
         }
         {
           isOpen &&
           <Portal>
             <div className="wrapper">
               {
-                deck.map((c,idx) => <div className="deck" key={idx} onClick={() => this.removeCard(idx)}> - {c.name} </div>)
+                deck.map((c,idx) => <div className="deck" key={idx}> - {c.name} </div>)
               }
               </div>
           </Portal>
