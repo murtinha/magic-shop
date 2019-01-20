@@ -21,3 +21,49 @@ exports[`<Card /> render should render properly 1`] = `
   </div>
 </div>
 `;
+
+exports[`<Card /> render should render properly added 1`] = `
+<div
+  className="cardFooter"
+>
+  <button
+    className="btn added"
+    onClick={[Function]}
+  >
+    Remover
+  </button>
+</div>
+`;
+
+exports[`<Card /> render should render properly opened 1`] = `
+<div
+  className="cardWrapper"
+>
+  <img
+    alt="imagem"
+    className="cardBody"
+    onClick={[Function]}
+  />
+  <CardDetails
+    artist="murtinha"
+    flavor="Card flavor"
+    manaCost="0"
+    name="Black Lotus"
+    onClose={[Function]}
+    rarity="Rare"
+    setName="Magic collection"
+    text="Card text"
+    type="Artifact"
+  />
+  <div
+    className="cardFooter"
+  >
+    <button
+      className="btn"
+      onClick={[Function]}
+    >
+      Adicionar
+    </button>
+  </div>
+</div>
+`;
