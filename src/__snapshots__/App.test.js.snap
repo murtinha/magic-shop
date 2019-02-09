@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> render should render correctly 1`] = `
+<div
+  className="appWrapper"
+>
+  <div
+    className="appHeader"
+  >
+    MONTE SEU DECK DE COMMANDER!
+    <span
+      className="icon"
+      onClick={[Function]}
+    >
+      Meu deck: 
+      0
+    </span>
+  </div>
+</div>
+`;
+
+exports[`<App /> render should render correctly opened 1`] = `
+<div
+  className="appWrapper"
+>
+  <div
+    className="appHeader"
+  >
+    MONTE SEU DECK DE COMMANDER!
+    <span
+      className="icon"
+      onClick={[Function]}
+    >
+      Meu deck: 
+      2
+    </span>
+  </div>
+  <Portal>
+    <div
+      className="wrapper"
+    >
+      <div
+        className="deck"
+        key="0"
+      >
+         - 
+        Black Lotus
+         
+      </div>
+      <div
+        className="deck"
+        key="1"
+      >
+         - 
+        Bufao
+         
+      </div>
+    </div>
+  </Portal>
+</div>
+`;
+
+exports[`<App /> render should render correctly with cards 1`] = `
+<div
+  className="appWrapper"
+>
+  <div
+    className="appHeader"
+  >
+    MONTE SEU DECK DE COMMANDER!
+    <span
+      className="icon"
+      onClick={[Function]}
+    >
+      Meu deck: 
+      0
+    </span>
+  </div>
+  <Card
+    card={
+      Object {
+        "artist": "murtinha",
+        "flavor": "Card flavor",
+        "id": 1,
+        "image": "path/imagem.png",
+        "manaCost": "0",
+        "name": "Black Lotus",
+        "rarity": "Rare",
+        "setName": "Magic collection",
+        "text": "Card text",
+        "type": "Artifact",
+      }
+    }
+    key="0"
+    onAdd={[Function]}
+    onRemove={[Function]}
+  />
+  <Card
+    card={
+      Object {
+        "artist": "murtinha2",
+        "flavor": "Card flavor 2",
+        "id": 2,
+        "image": "path/imagem2.png",
+        "manaCost": "B2G",
+        "name": "Bufao",
+        "rarity": "Legend",
+        "setName": "Magic collection 2",
+        "text": "Card text 2",
+        "type": "Creature",
+      }
+    }
+    key="1"
+    onAdd={[Function]}
+    onRemove={[Function]}
+  />
+</div>
+`;

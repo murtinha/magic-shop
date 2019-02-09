@@ -16,7 +16,7 @@ class App extends Component {
   componentDidMount() {
     fetch('https://api.magicthegathering.io/v1/cards?page=28')
       .then(res => res.json())
-      .then(data => this.setState({ cards: data.cards }));
+      .then(data => this.setState({ cards: data.cards }))
   }
     
   addCard = card => {
