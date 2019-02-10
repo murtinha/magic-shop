@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Portal } from 'react-portal';
 import './App.css';
 import Card from './components/card';
 
@@ -16,7 +15,7 @@ class App extends Component {
   componentDidMount() {
     fetch('https://api.magicthegathering.io/v1/cards?page=28')
       .then(res => res.json())
-      .then(data => this.setState({ cards: data.cards }));
+      .then(data => this.setState({ cards: data.cards }))
   }
     
   addCard = card => {
@@ -50,13 +49,11 @@ class App extends Component {
         }
         {
           isOpen &&
-          <Portal>
-            <div className="wrapper">
-              {
-                deck.map((c,idx) => <div className="deck" key={idx}> - {c.name} </div>)
-              }
-              </div>
-          </Portal>
+          <div className="wrapper">
+            {
+              deck.map((c,idx) => <div className="deck" key={idx}> - {c.name} </div>)
+            }
+            </div>
         }
       </div>
     );
