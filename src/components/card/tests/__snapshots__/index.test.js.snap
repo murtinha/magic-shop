@@ -45,15 +45,21 @@ exports[`<Card /> render should render properly opened 1`] = `
     onClick={[Function]}
   />
   <CardDetails
-    artist="murtinha"
-    flavor="Card flavor"
-    manaCost="0"
-    name="Black Lotus"
+    card={
+      Object {
+        "artist": "murtinha",
+        "flavor": "Card flavor",
+        "id": 1,
+        "image": "path/imagem.png",
+        "manaCost": "0",
+        "name": "Black Lotus",
+        "rarity": "Rare",
+        "setName": "Magic collection",
+        "text": "Card text",
+        "type": "Artifact",
+      }
+    }
     onClose={[Function]}
-    rarity="Rare"
-    setName="Magic collection"
-    text="Card text"
-    type="Artifact"
   />
   <div
     className="cardFooter"

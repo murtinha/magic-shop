@@ -2,23 +2,13 @@ import React from 'react';
 
 import { shallow } from 'enzyme';
 import Card from '../';
+import { card } from '../../../data';
 
 describe('<Card />', () => {
   const onAdd = jest.fn();
   const onRemove = jest.fn();
   const props = {
-    card: {
-      image: 'path/imagem.png',
-      name: 'Black Lotus',
-      id: 1,
-      manaCost: '0',
-      type: 'Artifact',
-      rarity: 'Rare',
-      setName: 'Magic collection',
-      text: 'Card text',
-      flavor: 'Card flavor',
-      artist: 'murtinha',
-    },
+    card,
     onAdd,
     onRemove,
   };

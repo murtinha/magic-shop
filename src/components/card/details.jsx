@@ -4,15 +4,17 @@ import { Portal } from 'react-portal';
 import './index.css';
 
 export const CardDetails: SComponent<Props> = ({ 
-  image,
-  name,
-  manaCost,
-  type,
-  rarity,
-  setName,
-  text,
-  flavor = "No description",
-  artist,
+  card: {
+    image,
+    name,
+    manaCost,
+    type,
+    rarity,
+    setName,
+    text,
+    flavor,
+    artist,
+  },
   onClose,
 }) => (
   <Portal>

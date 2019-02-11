@@ -40,15 +40,7 @@ export class Card extends Component {
           isOpen && 
           <CardDetails 
             onClose={()=> this.setState({ isOpen: false })}
-            image={card.imageUrl}
-            name={card.name}
-            manaCost={card.manaCost}
-            type={card.type}
-            rarity={card.rarity}
-            setName={card.setName}
-            text={card.text}
-            flavor={card.flavor}
-            artist={card.artist}
+            card={card}
           />
         }
         <div className="cardFooter">
